@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "ZDShop.h"
 
 @interface ViewController ()
+
+///  模型数组
+@property (nonatomic,strong) NSMutableArray *shops;
 
 @end
 
@@ -25,21 +29,45 @@
     
 }
 
-///  数据源方法
+#pragma mark -  数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 100;
+    return self.shops.count;
 
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    static NSString *ID = @"shop";
+//    static NSString *ID = @"shop";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"shop" forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 256.0 green:arc4random_uniform(255) / 256.0 blue:arc4random_uniform(255) / 256.0 alpha:1.0];
+    
     
     return cell;
     
+}
+
+#pragma mark - 懒加载
+- (NSMutableArray *)shops {
+
+    if (_shops == nil) {
+        
+        // 加载数据
+        NSArray *dictArr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1.plist" ofType:nil]];
+        
+        NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:dictArr.count];
+        
+        for (NSDictionary *dict in dictArr) {
+            
+            ZDShop *shop = [ZDShop shopWithDict:dict];
+            [arrM addObject:shop];
+        }
+        
+        _shops = arrM;
+    }
+    return _shops;
 }
 
 @end
