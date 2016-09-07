@@ -27,4 +27,21 @@
 }
 
 
++ (NSArray *)shopWithIndex:(NSInteger)index {
+
+    NSString *filePath = [NSString stringWithFormat:@"%zd.plist", (index % 3 + 1)];
+    ///  读取文件
+    NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:filePath ofType:nil]];
+    
+    NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:array.count];
+    
+    for (NSDictionary *dict in array) {
+        
+        ZDShop *shop = [ZDShop shopWithDict:dict];
+        [arrM addObject:shop];
+    }
+    
+    return arrM;
+}
+
 @end

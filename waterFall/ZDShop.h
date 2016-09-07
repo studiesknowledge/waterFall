@@ -26,4 +26,6 @@
 - (instancetype)initWithDict:(NSDictionary *)dict;
 + (instancetype)shopWithDict:(NSDictionary *)dict;
 
+///  加载数九
++ (NSArray *)shopWithIndex:(NSInteger)index;
 @end

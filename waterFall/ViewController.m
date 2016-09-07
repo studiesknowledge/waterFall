@@ -15,8 +15,10 @@
 
 ///  模型数组
 @property (nonatomic,strong) NSMutableArray *shops;
-
+///  尾部视图
 @property (weak,nonatomic) ZDFooterView *footerView;
+///  index用来记录当前加载了几次
+@property (assign,nonatomic) NSInteger index;
 @end
 
 @implementation ViewController
@@ -30,7 +32,21 @@
     // 设置collectionView的背景颜色
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
+    self.index = 0;
+    
+    [self loadData];
+    
 }
+
+#pragma mark - 加载数据
+- (void)loadData {
+
+    NSArray *modelArr = [ZDShop shopWithIndex:self.index];
+    [self.shops addObjectsFromArray:modelArr];
+
+    self.index ++;
+}
+
 
 #pragma mark -  数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -86,12 +102,13 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             // 1. 加载数据
-            
+            [self loadData];
             // 2. 刷新表格
-            
+            [self.collectionView reloadData];
             // 3. 菊花停止转动
-            
+            [self.footerView.activityVIew stopAnimating];
             // 4. 将footerView设置为nil
+            self.footerView = nil;
             
         });
     }
@@ -104,19 +121,8 @@
 - (NSMutableArray *)shops {
 
     if (_shops == nil) {
-        
-        // 加载数据
-        NSArray *dictArr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"1.plist" ofType:nil]];
-        
-        NSMutableArray *arrM = [NSMutableArray arrayWithCapacity:dictArr.count];
-        
-        for (NSDictionary *dict in dictArr) {
-            
-            ZDShop *shop = [ZDShop shopWithDict:dict];
-            [arrM addObject:shop];
-        }
-        
-        _shops = arrM;
+
+        _shops = [NSMutableArray array];
     }
     return _shops;
 }
