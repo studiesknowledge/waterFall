@@ -9,12 +9,14 @@
 #import "ViewController.h"
 #import "ZDShop.h"
 #import "ZDShopCell.h"
+#import "ZDFooterView.h"
 
 @interface ViewController ()
 
 ///  模型数组
 @property (nonatomic,strong) NSMutableArray *shops;
 
+@property (weak,nonatomic) ZDFooterView *footerView;
 @end
 
 @implementation ViewController
@@ -49,6 +51,18 @@
     
     return cell;
     
+}
+
+
+#pragma mark - 返回每一组的头部视图或者尾部视图
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+
+    ZDFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer" forIndexPath:indexPath];
+    
+    self.footerView = footerView;
+    
+    return footerView;
+
 }
 
 #pragma mark - 懒加载

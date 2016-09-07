@@ -15,7 +15,7 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1J8-rH-YM7">
                             <size key="itemSize" width="88" height="130"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="50" height="50"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
@@ -31,7 +31,7 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXF-df-eK0">
                                             <rect key="frame" x="0.0" y="113" width="88" height="17"/>
-                                            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.25134698275862066" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -54,6 +54,24 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footer" id="Wra-pp-HEo" customClass="ZDFooterView">
+                            <rect key="frame" x="0.0" y="130" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Kyv-9y-Kdk">
+                                    <rect key="frame" x="282" y="7" width="37" height="37"/>
+                                    <color key="color" red="0.31334723209999998" green="1" blue="0.20386076889999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Kyv-9y-Kdk" firstAttribute="centerY" secondItem="Wra-pp-HEo" secondAttribute="centerY" id="9yZ-a6-JIX"/>
+                                <constraint firstItem="Kyv-9y-Kdk" firstAttribute="centerX" secondItem="Wra-pp-HEo" secondAttribute="centerX" id="F71-Fa-68q"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="activityVIew" destination="Kyv-9y-Kdk" id="Mi2-e5-PK7"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="HXI-k2-vqV" id="ALg-b7-xpm"/>
                             <outlet property="delegate" destination="HXI-k2-vqV" id="2Mw-Jl-fZ3"/>

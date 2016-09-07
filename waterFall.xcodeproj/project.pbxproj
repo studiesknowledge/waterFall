@@ -18,6 +18,7 @@
 		4D6A6B3C1D7FEE7700B87BD3 /* 3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A6B391D7FEE7700B87BD3 /* 3.plist */; };
 		4D6A6B3F1D7FF30500B87BD3 /* ZDShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A6B3E1D7FF30500B87BD3 /* ZDShop.m */; };
 		4D6A6B421D7FF6AC00B87BD3 /* ZDShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A6B411D7FF6AC00B87BD3 /* ZDShopCell.m */; };
+		4D6A6B451D7FFDE200B87BD3 /* ZDFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A6B441D7FFDE200B87BD3 /* ZDFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		4D6A6B3E1D7FF30500B87BD3 /* ZDShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDShop.m; sourceTree = "<group>"; };
 		4D6A6B401D7FF6AC00B87BD3 /* ZDShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDShopCell.h; sourceTree = "<group>"; };
 		4D6A6B411D7FF6AC00B87BD3 /* ZDShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDShopCell.m; sourceTree = "<group>"; };
+		4D6A6B431D7FFDE200B87BD3 /* ZDFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDFooterView.h; sourceTree = "<group>"; };
+		4D6A6B441D7FFDE200B87BD3 /* ZDFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDFooterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 				4D6A6B241D7FEE2D00B87BD3 /* AppDelegate.m */,
 				4D6A6B261D7FEE2D00B87BD3 /* ViewController.h */,
 				4D6A6B271D7FEE2D00B87BD3 /* ViewController.m */,
+				4D6A6B431D7FFDE200B87BD3 /* ZDFooterView.h */,
+				4D6A6B441D7FFDE200B87BD3 /* ZDFooterView.m */,
 				4D6A6B401D7FF6AC00B87BD3 /* ZDShopCell.h */,
 				4D6A6B411D7FF6AC00B87BD3 /* ZDShopCell.m */,
 				4D6A6B3D1D7FF30500B87BD3 /* ZDShop.h */,
@@ -174,6 +179,7 @@
 				4D6A6B421D7FF6AC00B87BD3 /* ZDShopCell.m in Sources */,
 				4D6A6B281D7FEE2D00B87BD3 /* ViewController.m in Sources */,
 				4D6A6B251D7FEE2D00B87BD3 /* AppDelegate.m in Sources */,
+				4D6A6B451D7FFDE200B87BD3 /* ZDFooterView.m in Sources */,
 				4D6A6B221D7FEE2D00B87BD3 /* main.m in Sources */,
 				4D6A6B3F1D7FF30500B87BD3 /* ZDShop.m in Sources */,
 			);
