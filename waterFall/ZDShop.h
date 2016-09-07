@@ -17,7 +17,7 @@
 @property (nonatomic,copy) NSString *icon;
 
 ///  价格
-@property (assign,nonatomic) CGFloat price;
+@property (nonatomic,copy) NSString *price;
 
 ///  图片真实的宽度
 @property (assign,nonatomic) CGFloat width;

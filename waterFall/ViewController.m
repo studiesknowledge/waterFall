@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ZDShop.h"
+#import "ZDShopCell.h"
 
 @interface ViewController ()
 
@@ -40,10 +41,11 @@
 
 //    static NSString *ID = @"shop";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"shop" forIndexPath:indexPath];
+    ZDShopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"shop" forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 256.0 green:arc4random_uniform(255) / 256.0 blue:arc4random_uniform(255) / 256.0 alpha:1.0];
     
+    cell.shop = self.shops[indexPath.item];
     
     return cell;
     
