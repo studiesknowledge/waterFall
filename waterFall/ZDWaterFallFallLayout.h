@@ -7,12 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ZDWaterFallFallLayout;
+
+@protocol ZDWaterFallFallLayoutDelegate <NSObject>
+
+@required
+- (CGFloat)waterfallFlowLayout:(ZDWaterFallFallLayout *)flowLayout cellW:(CGFloat)cellW forIndexPath:(NSIndexPath *)indexPath;
+
+@end
 
 @interface ZDWaterFallFallLayout : UICollectionViewFlowLayout
 
+@property (weak,nonatomic) id<ZDWaterFallFallLayoutDelegate> delegate;
+
+
 ///  列数
 @property (assign,nonatomic) NSInteger columnCount;
-
-@property (nonatomic,strong) NSArray *dataList;
 
 @end

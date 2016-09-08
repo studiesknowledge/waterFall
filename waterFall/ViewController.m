@@ -12,7 +12,7 @@
 #import "ZDFooterView.h"
 #import "ZDWaterFallFallLayout.h"
 
-@interface ViewController ()
+@interface ViewController ()<ZDWaterFallFallLayoutDelegate>
 
 ///  模型数组
 @property (nonatomic,strong) NSMutableArray *shops;
@@ -28,13 +28,12 @@
 
 @implementation ViewController
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.flowLayout.columnCount = 3;
+    
+    self.flowLayout.delegate = self;
     
     // 设置collectionView的背景颜色
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -45,6 +44,16 @@
     
 }
 
+
+-(CGFloat)waterfallFlowLayout:(ZDWaterFallFallLayout *)flowLayout cellW:(CGFloat)cellW forIndexPath:(NSIndexPath *)indexPath {
+
+    ZDShop *shop = self.shops[indexPath.item];
+    
+    return shop.height / shop.width * cellW;
+
+}
+
+
 #pragma mark - 加载数据
 - (void)loadData {
 
@@ -52,8 +61,6 @@
     [self.shops addObjectsFromArray:modelArr];
 
     self.index ++;
-    
-    self.flowLayout.dataList = self.shops;
 }
 
 
@@ -65,13 +72,9 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-//    static NSString *ID = @"shop";
     
     ZDShopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"shop" forIndexPath:indexPath];
-    
-//    cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 256.0 green:arc4random_uniform(255) / 256.0 blue:arc4random_uniform(255) / 256.0 alpha:1.0];
-    
+ 
     cell.shop = self.shops[indexPath.item];
     
     return cell;

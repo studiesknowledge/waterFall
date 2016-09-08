@@ -7,7 +7,7 @@
 //
 
 #import "ZDWaterFallFallLayout.h"
-#import "ZDShop.h"
+//#import "ZDShop.h"
 
 @interface ZDWaterFallFallLayout ()
 
@@ -28,13 +28,13 @@
     // 每一次来计算新的cell布局属性之前先把最后一个footerView的布局属性删除
     [self.attrM removeLastObject];
     
-    NSInteger newcellCount = self.dataList.count - self.attrM.count;
+    // 获取当前collectionView中的cell的总个数
+    NSInteger itemCount = [self.collectionView numberOfItemsInSection:0];
+
+    NSInteger newcellCount = itemCount - self.attrM.count;
     
     for (NSInteger i = 0; i < newcellCount; i++) {
-        
-        // 获取当前cell的模型
-        ZDShop *shop = self.dataList[self.attrM.count];
-        
+
         // 创建布局属性对象索引
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.attrM.count inSection:0];
         // 创建布局属性
@@ -46,7 +46,8 @@
         CGFloat cellWidth = (contentW - (self.columnCount - 1) * self.minimumInteritemSpacing) / self.columnCount;
         
         // cell的高度
-        CGFloat cellH = [self cellWithCellW:cellWidth imageSize:CGSizeMake(shop.width, shop.height)];
+        CGFloat cellH = [self.delegate waterfallFlowLayout:self cellW:cellWidth forIndexPath:indexPath];
+        
         
         // 计算列号
         NSInteger col = [self minCol];
@@ -103,16 +104,8 @@
 
 }
 
-#pragma mark - 根据比例计算cell的高度
-- (CGFloat)cellWithCellW:(CGFloat)cellW imageSize:(CGSize)imageSize {
-
-    return imageSize.height / imageSize.width * cellW;
-}
-
-
 
 - (CGSize)collectionViewContentSize {
-
 
     return CGSizeMake(0, [self.eachColMaxH[self.maxCol] floatValue] + self.footerReferenceSize.height - self.minimumInteritemSpacing);
 }
