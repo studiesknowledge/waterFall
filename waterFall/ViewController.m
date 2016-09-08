@@ -10,6 +10,7 @@
 #import "ZDShop.h"
 #import "ZDShopCell.h"
 #import "ZDFooterView.h"
+#import "ZDWaterFallFallLayout.h"
 
 @interface ViewController ()
 
@@ -19,6 +20,10 @@
 @property (weak,nonatomic) ZDFooterView *footerView;
 ///  index用来记录当前加载了几次
 @property (assign,nonatomic) NSInteger index;
+
+
+@property (weak, nonatomic) IBOutlet ZDWaterFallFallLayout *flowLayout;
+
 @end
 
 @implementation ViewController
@@ -28,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.flowLayout.columnCount = 3;
     
     // 设置collectionView的背景颜色
     self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -45,6 +52,8 @@
     [self.shops addObjectsFromArray:modelArr];
 
     self.index ++;
+    
+    self.flowLayout.dataList = self.shops;
 }
 
 
@@ -61,7 +70,7 @@
     
     ZDShopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"shop" forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 256.0 green:arc4random_uniform(255) / 256.0 blue:arc4random_uniform(255) / 256.0 alpha:1.0];
+//    cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 256.0 green:arc4random_uniform(255) / 256.0 blue:arc4random_uniform(255) / 256.0 alpha:1.0];
     
     cell.shop = self.shops[indexPath.item];
     
